@@ -12,20 +12,36 @@
         }
         .animate-fadeIn { animation: fadeIn 1s ease-out forwards; }
         .hover-scale { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .hover-scale:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        .hover-scale:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); }
         .smooth-scroll { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; }
+        .service-card { transition: transform 0.3s ease; }
+        .service-card:hover { transform: translateY(-5px); }
+        .slider {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .slide {
+            min-width: 300px;
+            max-width: 300px;
+            margin: 0 10px;
+        }
+        @media (max-width: 768px) {
+            .slide { min-width: 100%; margin: 0 0 20px 0; }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/elevate/logo.png">
+    <meta name="description" content="Elevate Solutions offers premium boutique business solutions including tactical services and strategic support.">
+    <meta name="keywords" content="business solutions, tactical services, strategic support, pitchdeck proposals, GTM strategy">
 </head>
 <body class="bg-blue-50 text-gray-900 font-sans smooth-scroll">
     <!-- Header -->
     <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-2">
-                <svg class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
+            <a href="/elevate/" class="flex items-center space-x-2">
+                <img src="/elevate/logo.png" alt="Elevate Solutions Logo" class="w-8 h-8">
                 <span class="text-2xl font-light tracking-wider text-gray-900">Elevate Solutions</span>
             </a>
             <ul class="flex space-x-8">
@@ -50,28 +66,118 @@
     <section id="services" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-light text-center text-gray-900 mb-12 animate-fadeIn">Our Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-6 bg-blue-50 rounded-lg shadow-sm hover-scale animate-fadeIn" style="animation-delay: 0.3s;">
-                    <svg class="w-12 h-12 text-blue-600 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2v20M2 12h20M6 6l12 12M6 18l12-12"/>
-                    </svg>
-                    <h3 class="text-xl font-medium text-gray-900 mb-4">Strategic Consulting</h3>
-                    <p class="text-gray-700">Tailored strategies to drive growth and efficiency with precision.</p>
+            <div class="relative">
+                <div class="slider flex overflow-x-auto scrollbar-hide snap-x" id="serviceSlider">
+                    <!-- Tactical Services -->
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 0.3s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Pitchdeck Proposals</h3>
+                        <p class="text-gray-600">Craft compelling presentations to captivate investors.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 0.4s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 014 11v-2.5m4-2.5H6a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">HR Modules</h3>
+                        <p class="text-gray-600">Customized human resource frameworks.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 0.5s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Business Models</h3>
+                        <p class="text-gray-600">Tailored strategies for business growth.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 0.6s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Visual Reports</h3>
+                        <p class="text-gray-600">Insightful data presented visually.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 0.7s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">One-Pagers</h3>
+                        <p class="text-gray-600">Concise, impactful business summaries.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 0.8s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Infographics</h3>
+                        <p class="text-gray-600">Visually engaging data representations.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 0.9s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Operational Manuals</h3>
+                        <p class="text-gray-600">Detailed guides for operational efficiency.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 1.0s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-6.75 0H9.75L10.5 19.5m-.75-6h10.125c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h4.5m-3.75 6h12m-12 0c0 1.035.84 1.875 1.875 1.875h10.5c1.035 0 1.875-.84 1.875-1.875M6 18h.75m6.75 2.25H18M6 18H5.25m0 0H3.375V13.5h15v4.875M3.375 18h4.875m11.625 0h1.125M16.5 7.5h-1.5m-1.5 0h-1.5m9 0h-3.75m0 0H21m-9 0H7.5m9 0H9.75M7.5 19.5v-2.625c0-.621.504-1.125 1.125-1.125h2.625c.621 0 1.125.504 1.125 1.125v2.625m-8.25-9v7.5m9-7.5v7.5m-9.375-7.5H3v7.5h3.375m7.5-7.5H21v7.5h-7.5"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">SCM Planning</h3>
+                        <p class="text-gray-600">Optimized supply chain management strategies.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 1.1s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">GTM Strategy</h3>
+                        <p class="text-gray-600">Effective go-to-market plans for success.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 1.2s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Content Calendars</h3>
+                        <p class="text-gray-600">Structured plans for content delivery.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 1.3s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9 5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25m0-14.25v9m0-9.375L3 7.5"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Market Research</h3>
+                        <p class="text-gray-600">In-depth analysis of market trends.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 1.4s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.875 4.5a1.875 1.875 0 100-3.75 1.875 1.875 0 000 3.75z"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Consumer Analysis Frameworks</h3>
+                        <p class="text-gray-600">Data-driven insights into consumer behavior.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 1.5s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Brand Strategy & Identity</h3>
+                        <p class="text-gray-600">Distinctive branding that resonates.</p>
+                    </div>
+                    <div class="slide snap-center bg-blue-50 rounded-xl shadow-md p-6 hover-scale service-card animate-fadeIn" style="animation-delay: 1.6s;">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/>
+                        </svg>
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Campaign Planning</h3>
+                        <p class="text-gray-600">Strategic plans for effective campaigns.</p>
+                    </div>
                 </div>
-                <div class="p-6 bg-blue-50 rounded-lg shadow-sm hover-scale animate-fadeIn" style="animation-delay: 0.4s;">
-                    <svg class="w-12 h-12 text-blue-600 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 3h18v18H3zM9 9h6v6H9z"/>
+                <button id="prevSlide" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 focus:outline-none z-10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/>
                     </svg>
-                    <h3 class="text-xl font-medium text-gray-900 mb-4">Pitch Decks</h3>
-                    <p class="text-gray-700">Compelling presentations to captivate investors and stakeholders.</p>
-                </div>
-                <div class="p-6 bg-blue-50 rounded-lg shadow-sm hover-scale animate-fadeIn" style="animation-delay: 0.5s;">
-                    <svg class="w-12 h-12 text-blue-600 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2l10 10-10 10L2 12zM8 12h8M12 8v8"/>
+                </button>
+                <button id="nextSlide" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 focus:outline-none z-10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
                     </svg>
-                    <h3 class="text-xl font-medium text-gray-900 mb-4">Brand Elevation</h3>
-                    <p class="text-gray-700">Distinctive brand identities that resonate and inspire.</p>
-                </div>
+                </button>
             </div>
         </div>
     </section>
@@ -85,7 +191,7 @@
             </p>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-white">
         <div class="container mx-auto px-6">
@@ -122,6 +228,39 @@
                 });
             });
         });
+
+        // Slider functionality
+        const slider = document.getElementById('serviceSlider');
+        const prevButton = document.getElementById('prevSlide');
+        const nextButton = document.getElementById('nextSlide');
+        let scrollPosition = 0;
+        const slideWidth = 320; // Width of each slide including margin
+
+        prevButton.addEventListener('click', () => {
+            if (scrollPosition > 0) {
+                scrollPosition -= slideWidth;
+                slider.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (scrollPosition < slider.scrollWidth - slider.clientWidth) {
+                scrollPosition += slideWidth;
+                slider.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+            }
+        });
+
+        // Optional: Auto-scroll (uncomment to enable)
+        // let autoScroll = setInterval(() => {
+        //     if (scrollPosition < slider.scrollWidth - slider.clientWidth) {
+        //         scrollPosition += slideWidth;
+        //     } else {
+        //         scrollPosition = 0;
+        //     }
+        //     slider.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+        // }, 5000);
+        // slider.addEventListener('mouseover', () => clearInterval(autoScroll));
+        // slider.addEventListener('mouseout', () => autoScroll = setInterval(() => { ... }, 5000));
     </script>
 </body>
 </html>
